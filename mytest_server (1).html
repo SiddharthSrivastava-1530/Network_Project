@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Network Status</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .design {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      padding-top: 100px;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #060404;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #ffffff;
+    }
+
+    p {
+      color: #ffffff;
+    }
+
+    .status {
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    img {
+      height: 150px;
+      width: 150px;
+      margin-bottom: 50px;
+    }
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #root {
+      display: grid;
+      justify-content: center;
+      gap: 20px;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .design {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container0,
+    .container1,
+    .container2,
+    .container3,
+    .container4,
+    .container5 {
+      text-align: center;
+      background-color: #060404;
+      color: #f2f2f2;
+      box-shadow: rgb(0, 0, 0) 0px 1px 1px 0px inset,
+        rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    }
+
+    #prop {
+      margin-bottom: 50px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div class="design">
+    <img src="./IITP_logo.jpeg" alt="Logo IITP" />
+    <div class="container0 col-4" id="prop">
+      <h1>Server</h1>
+      <p>
+        Download Speed:
+        <span id="download_speed0" class="status">Loading...</span> Mbps
+      </p>
+      <p>
+        Upload Speed:
+        <span id="upload_speed0" class="status">Loading...</span> Mbps
+      </p>
+      <p>Ping: <span id="ping0" class="status">Loading...</span> Mbps</p>
+      <p>
+        Ping Location:
+        <span id="ping_location0" class="status">Loading...</span>
+      </p>
+      <p>
+        Bandwidth:
+        <span id="bandwidth0" class="status">Loading...</span> Mbps
+      </p>
+    </div>
+    <div id="root" class="row">
+      <script>
+        let n = prompt("Enter the number of devices");
+        for (let i = 0; i < n; i++) {
+          var div = document.createElement("div");
+          var h1 = document.createElement("h1");
+          div.className = 'container' + (1) + ' col-4';//container0
+          h1.innerText = 'Client ' + (i + 1);
+
+          var p1 = document.createElement("p");
+          var span1 = document.createElement("span");
+          span1.id = 'download_speed' + (i + 1); span1.className = 'status';
+          span1.innerText = 'Loading...';
+          p1.append('Download Speed: ', span1, 'Mbps');
+
+          var p2 = document.createElement("p");
+          var span2 = document.createElement("span");
+          span2.id = 'upload_speed' + (i + 1); span2.className = 'status';
+          span2.innerText = 'Loading...';
+          p2.append('Upload Speed: ', span2, 'Mbps');
+
+          var p3 = document.createElement("p");
+          var span3 = document.createElement("span");
+          span3.id = 'ping' + (i + 1); span3.className = 'status';
+          span3.innerText = 'Loading...';
+          p3.append('Ping:', span3, 'Mbps');
+
+          var p3 = document.createElement("p");
+          var span3 = document.createElement("span");
+          span3.id = 'ping' + (i + 1); span3.className = 'status';
+          span3.innerText = 'Loading...';
+          p3.append('Ping:', span3, 'Mbps');
+
+          var p4 = document.createElement("p");
+          var span4 = document.createElement("span");
+          span4.id = 'ping_location' + (i + 1); span4.className = 'status';
+          span4.innerText = 'Loading...';
+          p4.append('Ping Location:', span4);
+
+          var p5 = document.createElement("p");
+          var span5 = document.createElement("span");
+          span5.id = 'bandwidth' + (i + 1); span5.className = 'status';
+          span5.innerText = 'Loading...';
+          p5.append('Bandwidth:', span5, 'Mbps');
+
+          const maindiv = document.querySelector("#root");
+
+          div.appendChild(h1);
+          div.appendChild(p1);
+          div.appendChild(p2);
+          div.appendChild(p3);
+          div.appendChild(p4);
+          div.appendChild(p5);
+
+          maindiv.appendChild(div);
+          // document.body.appendChild(div);
+        }  
+      </script>
+    </div>
+    <!-- <div class="container1 col-4">
+          <h1>Client 1</h1>
+          <p>
+            Download Speed:
+            <span id="download_speed1" class="status">Loading...</span> Mbps
+          </p>
+          <p>
+            Upload Speed:
+            <span id="upload_speed1" class="status">Loading...</span> Mbps
+          </p>
+          <p>Ping: <span id="ping1" class="status">Loading...</span> Mbps</p>
+          <p>
+            Ping Location:
+            <span id="ping_location1" class="status">Loading...</span>
+          </p>
+          <p>
+            Bandwidth:
+            <span id="bandwidth1" class="status">Loading...</span> Mbps
+          </p>
+        </div>
+
+        <div class="container2 col-4">
+          <h1>Client 2</h1>
+          <p>
+            Download Speed:
+            <span id="download_speed2" class="status">Loading...</span> Mbps
+          </p>
+          <p>
+            Upload Speed:
+            <span id="upload_speed2" class="status">Loading...</span> Mbps
+          </p>
+          <p>Ping: <span id="ping2" class="status">Loading...</span> Mbps</p>
+          <p>
+            Ping Location:
+            <span id="ping_location2" class="status">Loading...</span>
+          </p>
+          <p>
+            Bandwidth:
+            <span id="bandwidth2" class="status">Loading...</span> Mbps
+          </p>
+        </div>
+
+        <div class="container3 col-4">
+          <h1>Client 3</h1>
+          <p>
+            Download Speed:
+            <span id="download_speed3" class="status">Loading...</span> Mbps
+          </p>
+          <p>
+            Upload Speed:
+            <span id="upload_speed3" class="status">Loading...</span> Mbps
+          </p>
+          <p>Ping: <span id="ping3" class="status">Loading...</span> Mbps</p>
+          <p>
+            Ping Location:
+            <span id="ping_location3" class="status">Loading...</span>
+          </p>
+          <p>
+            Bandwidth:
+            <span id="bandwidth3" class="status">Loading...</span> Mbps
+          </p>
+        </div>
+
+        <div class="container4 col-4">
+          <h1>Client 4</h1>
+          <p>
+            Download Speed:
+            <span id="download_speed4" class="status">Loading...</span> Mbps
+          </p>
+          <p>
+            Upload Speed:
+            <span id="upload_speed4" class="status">Loading...</span> Mbps
+          </p>
+          <p>Ping: <span id="ping4" class="status">Loading...</span> Mbps</p>
+          <p>
+            Ping Location:
+            <span id="ping_location4" class="status">Loading...</span>
+          </p>
+          <p>
+            Bandwidth:
+            <span id="bandwidth4" class="status">Loading...</span> Mbps
+          </p>
+        </div>
+
+        <div class="container5 col-4">
+          <h1>Client 5</h1>
+          <p>
+            Download Speed:
+            <span id="download_speed5" class="status">Loading...</span> Mbps
+          </p>
+          <p>
+            Upload Speed:
+            <span id="upload_speed5" class="status">Loading...</span> Mbps
+          </p>
+          <p>Ping: <span id="ping5" class="status">Loading...</span> Mbps</p>
+          <p>
+            Ping Location:
+            <span id="ping_location5" class="status">Loading...</span>
+          </p>
+          <p>
+            Bandwidth:
+            <span id="bandwidth5" class="status">Loading...</span> Mbps
+          </p>
+        </div>
+      </div> -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+    <script>
+      // Fetch network status data from the Flask backend
+      async function measure_network() {
+        try {
+
+          const response = await fetch("http://localhost:5000/network/status");
+          const data = await response.json();
+
+          document.getElementById("download_speed0").textContent =
+            data.download_speed.toFixed(2);
+          document.getElementById("upload_speed0").textContent =
+            data.upload_speed.toFixed(2);
+          document.getElementById("ping0").textContent = data.ping;
+          document.getElementById("ping_location0").textContent =
+            data.ping_location;
+          document.getElementById("bandwidth0").textContent =
+            data.bandwidth.toFixed(2);
+
+
+          async function create_div() {
+            for (let i = 0; i < n; i++) {
+              console.log("HII")
+              let user = 'user' + String(i + 1)
+              console.log(user)
+              let user_res = await fetch(`http://localhost:5000/network/status/${user}`);
+              let user_data = await user_res.json();
+              console.log(user_data.download_speed)
+              // user_res = await fetch("http://localhost:5000/network/status/user");
+              // user_data = await user_res.json();
+
+              document.getElementById("download_speed" + (i + 1)).textContent =
+                user_data.download_speed.toFixed(2);
+              document.getElementById("upload_speed" + (i + 1)).textContent =
+                user_data.upload_speed.toFixed(2);
+              document.getElementById("ping" + (i + 1)).textContent = user_data.ping;
+              document.getElementById("ping_location" + (i + 1)).textContent =
+                user_data.ping_location;
+              document.getElementById("bandwidth" + (i + 1)).textContent =
+                user_data.bandwidth.toFixed(2);
+            }
+
+            
+          }
+
+          create_div()
+          setInterval(create_div, 5000)
+
+          
+
+
+          //   document.getElementById("download_speed2").textContent =
+          //     user_data[1].download_speed.toFixed(2);
+          //   document.getElementById("upload_speed2").textContent =
+          //     user_data[1].upload_speed.toFixed(2);
+          //   document.getElementById("ping2").textContent = user_data[1].ping;
+          //   document.getElementById("ping_location2").textContent =
+          //     user_data[1].ping_location;
+          //   document.getElementById("bandwidth2").textContent =
+          //     user_data[1].bandwidth.toFixed(2);
+
+          //   document.getElementById("download_speed3").textContent =
+          //     user_data[2].download_speed.toFixed(2);
+          //   document.getElementById("upload_speed3").textContent =
+          //     user_data[2].upload_speed.toFixed(2);
+          //   document.getElementById("ping3").textContent = user_data[2].ping;
+          //   document.getElementById("ping_location3").textContent =
+          //     user_data[2].ping_location;
+          //   document.getElementById("bandwidth3").textContent =
+          //     user_data[2].bandwidth.toFixed(2);
+
+          //   document.getElementById("download_speed4").textContent =
+          //     user_data[3].download_speed.toFixed(2);
+          //   document.getElementById("upload_speed4").textContent =
+          //     user_data[3].upload_speed.toFixed(2);
+          //   document.getElementById("ping4").textContent = user_data[3].ping;
+          //   document.getElementById("ping_location4").textContent =
+          //     user_data[3].ping_location;
+          //   document.getElementById("bandwidth4").textContent =
+          //     user_data[3].bandwidth.toFixed(2);
+
+          //   document.getElementById("download_speed5").textContent =
+          //     user_data[4].download_speed.toFixed(2);
+          //   document.getElementById("upload_speed5").textContent =
+          //     user_data[4].upload_speed.toFixed(2);
+          //   document.getElementById("ping5").textContent = user_data[4].ping;
+          //   document.getElementById("ping_location5").textContent =
+          //     user_data[4].ping_location;
+          //   document.getElementById("bandwidth5").textContent =
+          //     user_data[4].bandwidth.toFixed(2);
+        } catch (error) {
+          console.error("Error fetching network status:", error);
+        }
+      }
+      
+      // Fetch network status initially and then every 5 seconds
+      measure_network();
+      setInterval(measure_network, 5000);
+    </script>
+</body>
+
+</html>
